@@ -1,0 +1,14 @@
+.bord{
+    height:400px;
+    width:400px;
+    display:flex;
+    flex-wrap: wrap;
+    align-content: center;
+    margin:0 auto ;
+}
+
+.bordChild{
+    border:1px solid black;
+    height:110px;
+    width:110px;
+}
