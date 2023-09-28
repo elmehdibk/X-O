@@ -1,10 +1,12 @@
 let cells=["","","","","","","","",""]
 const border = document.querySelector('.border')
+const displayP=document.querySelector('.turn')
 let player1='X'
 let player2='O'
 let active=true
 let turn=true
-const displayP=document.querySelector('.turn')
+
+
 
 function play(index){
 
@@ -12,7 +14,7 @@ function play(index){
     
     if(turn && cells[index]==''){
         cells[index]=player1
-        displayP.innerHTML=`${player2}'s turn`
+        displayP.innerHTML=`Player ${player2} turn`
         if (winer()) {
             displayP.innerText = `Player ${player1} win!`;
             active=false
@@ -25,7 +27,7 @@ function play(index){
     
    if(turn&&cells[index]==''){
              cells[index]=player2
-             displayP.innerHTML=`${player1}'s turn`
+             displayP.innerHTML=`Player ${player1} turn`
              if (winer()) {
                 displayP.innerText = `Player ${player2} win!`;
                 active=false
@@ -40,9 +42,15 @@ function renderBorder(){
     for (let i = 0; i < cells.length; i++) {
         const cell =document.createElement('div')
         cell.className='bordChild'
-       cell.innerText=cells[i]
+       cell.innerText=cells[i]      
        cell.addEventListener('click',()=>{play(i)})
-       border.appendChild(cell) 
+       border.appendChild(cell)
+       cell.innerHTML=cells[i] 
+       if(cell.innerHTML=='X'){
+        cell.style.color='red'
+       }else{
+        cell.style.color='royalblue'
+       }
     }
     
 }
