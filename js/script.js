@@ -1,6 +1,7 @@
 let cells=["","","","","","","","",""]
 const border = document.querySelector('.border')
 const displayP=document.querySelector('.turn')
+const replay=document.querySelector('#replay')
 let player1='X'
 let player2='O'
 let active=true
@@ -55,6 +56,8 @@ function renderBorder(){
     
 }
 
+const rep=()=>location.reload()
+
 
 function winer(){
     
@@ -67,13 +70,14 @@ function winer(){
         [2, 5, 8],
         [0, 4, 8],
         [2, 4, 6],
-      ];
-
-      for (const combo of winCombinations) {
+    ];
+    
+    for (const combo of winCombinations) {
         const [a, b, c] = combo;
-        console.log(cells[a]);
         if (cells[a] && cells[a] === cells[b] && cells[a] === cells[c]) {
-          return true;
+            document.getElementById('replay').style.marginLeft='35%';
+            return true    ,replay.innerHTML=`<h1 class='title'>PLAY AGAIN</h1><button onclick='rep()'>Replay</button>`;  ;
+          
         }
       }
       return false;
